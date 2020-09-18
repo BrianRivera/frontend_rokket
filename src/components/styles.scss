@@ -1,0 +1,65 @@
+.container_app {
+    margin-top: 15%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    ;
+}
+
+.base_container {
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    h3,
+    h5,
+    h6 {
+        width: 100%;
+        text-align: center;
+        color: black;
+    }
+    .inputForm {
+        outline-style: none;
+        width: 100%;
+        height: 40px;
+        border-style: solid;
+        border-color: #ec4848d8;
+        border-radius: 10px;
+        border-width: 1px;
+        &:hover {
+            animation-name: anim;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        &:focus {
+            animation-name: anim;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+    }
+    textarea {
+        height: 70px !important;
+    }
+}
+
+@keyframes anim {
+    0% {
+        border-color: #FFE80D;
+    }
+    25% {
+        border-color: #ff6600;
+    }
+    /*Naranja*/
+    50% {
+        border-color: #4a08b4;
+    }
+    /*Negro*/
+    75% {
+        border-color: #039BA6;
+    }
+    /*Otra vez naranja*/
+    95% {
+        border-color: #FFE80D;
+    }
+    100% {
+        border-color: #ff0;
+    }
+    /*Otra vez amarillo*/
+}
