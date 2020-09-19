@@ -1,5 +1,5 @@
 .container_app {
-    margin-top: 15%;
+    margin-top: 5%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     ;
 }
@@ -36,6 +36,48 @@
     }
     textarea {
         height: 70px !important;
+    }
+    svg {
+        &:hover {
+            cursor: pointer;
+            color: red;
+        }
+    }
+    .listPoderes {
+        border-style: solid;
+        border-width: 0.5px;
+        border-color: #adadad91;
+        border-radius: 10px;
+        .itemPoder {
+            width: 98%;
+            padding: 15px;
+            margin: 5px;
+            border-style: solid;
+            border-radius: 5px;
+            border-width: 0.3px;
+            border-color: #01016e;
+        }
+    }
+    button {
+        width: 40%;
+        height: 30px;
+        border-style: none;
+        border-radius: 14px;
+        background-color: hsl(199, 80%, 63%);
+        color: white;
+        &:focus {
+            outline-style: none;
+        }
+        &:hover {
+            background-color: #56b3df;
+        }
+        &:active {
+            background-color: hsl(199, 56%, 56%);
+        }
+    }
+    .listPoderes {
+        height: 200px;
+        overflow-y: scroll;
     }
 }
 
