@@ -63,8 +63,10 @@
         height: 30px;
         border-style: none;
         border-radius: 14px;
-        background-color: hsl(199, 80%, 63%);
         color: white;
+    }
+    .btnAddSkill {
+        background-color: hsl(199, 80%, 63%);
         &:focus {
             outline-style: none;
         }
@@ -73,6 +75,18 @@
         }
         &:active {
             background-color: hsl(199, 56%, 56%);
+        }
+    }
+    .btnSave {
+        background-color: rgb(85, 236, 92);
+        &:focus {
+            outline-style: none;
+        }
+        &:hover {
+            background-color: #51da58;
+        }
+        &:active {
+            background-color: rgb(77, 216, 84);
         }
     }
     .listPoderes {

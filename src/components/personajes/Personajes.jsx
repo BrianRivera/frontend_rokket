@@ -39,7 +39,7 @@ export const Personajes = () => {
                 items={[]}
               ></FormLista>
             </div>
-            <button>Guardar</button>
+            <button className="btnSave">Guardar</button>
           </form>
           <br />
         </div>

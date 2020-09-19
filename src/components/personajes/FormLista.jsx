@@ -77,7 +77,7 @@ export const FormLista = ({ title = "", Form = [], items = [] }) => {
           }
         })}
       <div className="col-sm-12">
-        <button onClick={handleAddHabilitie}>Agregar habilidad</button>
+        <button onClick={handleAddHabilitie} className="btnAddSkill">Agregar habilidad</button>
       </div>
       <div className="col-sm-12">
         <hr />
