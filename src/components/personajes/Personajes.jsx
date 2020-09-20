@@ -56,6 +56,7 @@ export const Personajes = () => {
     const formdata = new FormData();
     formdata.append("archivo", imageState.file, imageState.nameFile);
     insertPersonaje(body,formdata,setPersonajeState);
+    setImageState({default:imageState.default});
     reset();
     setitemsState([]);
   };
@@ -133,7 +134,7 @@ export const Personajes = () => {
             onChange={handleFile}
           />
           <img
-            src={(!imageState.preview || imageState.preview === '') ? imageState.default : imageState.preview}
+            src={(!imageState.file || imageState.file === '') ? imageState.default : URL.createObjectURL(imageState.file)}
             className="img-fluid"
             alt="imgPersonaje"
           ></img>

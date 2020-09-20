@@ -87,8 +87,6 @@ export const deletePersonaje = async(id, setPersonajeState) => {
     });
 };
 
-
-
 const refreshStatePersonaje = (setPersonajeState, personaje, type) => {
     setPersonajeState((e) => {
         let newPersonaje;
@@ -108,14 +106,13 @@ const refreshStatePersonaje = (setPersonajeState, personaje, type) => {
     });
 };
 
-
 const insertImage = async(id, image) => {
     var requestOptions = {
-        method: 'PUT',
+        method: "PUT",
         body: image,
-        redirect: 'follow'
+        redirect: "follow",
     };
 
     const response = await fetch(`${URL_BACKEND}/upload/${id}`, requestOptions);
     return await response.json();
-}
+};

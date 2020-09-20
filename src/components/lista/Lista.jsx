@@ -35,7 +35,9 @@ export const Lista = memo(({loading,data,error,setPersonajeState}) => {
         <tbody>
             {
                 (!loading && !error)
-                ?data.personajes.map(p=>(
+                ?
+                (data.personajes.length===0)?(<tr><td colSpan="6">Sin personajes</td></tr>):
+                data.personajes.map(p=>(
                     <Fila
                     {...p}
                     key={p._id.toString()}
