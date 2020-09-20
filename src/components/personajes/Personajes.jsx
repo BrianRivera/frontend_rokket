@@ -6,17 +6,24 @@ import { FormLista } from "./FormLista";
 import { URL_BACKEND } from "./../../utils/contants";
 import "./../styles.scss";
 import { Lista } from "../lista/Lista";
+import Swal from "sweetalert2";
 
 export const Personajes = () => {
   const [dataRace] = useFetch(`${URL_BACKEND}/raza`);
 
-  const [dataPersonaje, setPersonajeState] = useFetch(`${URL_BACKEND}/personaje`);
- 
+  const [dataPersonaje, setPersonajeState] = useFetch(
+    `${URL_BACKEND}/personaje`
+  );
   const [itemsState, setitemsState] = useState([]);
-
-
-  const [values, handleInputChange, reset] = useForm({ name: "", race: "" });
+  const [imageState, setImageState] = useState({
+    default: 'https://vignette.wikia.nocookie.net/dragonball/images/3/35/Esfera_del_dragon_4_estrellas.png/revision/latest?cb=20140105064853&path-prefix=es',
+  })
+  const [values, handleInputChange, reset] = useForm({
+    name: "",
+    race: "",
+  });
   const { name, race } = values;
+
 
   const formHabilidades = [
     {
@@ -33,14 +40,34 @@ export const Personajes = () => {
 
   const handleSubmitPersonaje = (e) => {
     e.preventDefault();
+    if(!imageState.file || imageState.file === '') return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `Debe de seleccionar una imagen`,
+    })
+    
     const body = new URLSearchParams();
     body.append("name", name);
     body.append("race", race);
     body.append("skills", JSON.stringify(itemsState));
     body.append("image", "I1");
-    insertPersonaje(body,setPersonajeState);
+
+
+    const formdata = new FormData();
+    formdata.append("archivo", imageState.file, imageState.nameFile);
+    insertPersonaje(body,formdata,setPersonajeState);
     reset();
     setitemsState([]);
+  };
+
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    const nameFile = e.target.value;
+    if (file) {
+      setImageState(e=>({...e,file
+        ,nameFile}))
+      };
+    // URL.createObjectURL(contImg[0])
   };
 
   return (
@@ -99,9 +126,14 @@ export const Personajes = () => {
           <hr />
           <h5>Imagen</h5>
           <br />
-          <input type="file" className="form-control" />
+          <input
+            type="file"
+            name="image"
+            className="form-control"
+            onChange={handleFile}
+          />
           <img
-            src="https://www.alfabetajuega.com/wp-content/uploads/2019/08/dragon-ball-goku.jpg"
+            src={(!imageState.preview || imageState.preview === '') ? imageState.default : imageState.preview}
             className="img-fluid"
             alt="imgPersonaje"
           ></img>
@@ -109,7 +141,10 @@ export const Personajes = () => {
           <br />
         </div>
         <div className="col-sm-12">
-          <Lista {...dataPersonaje} setPersonajeState={setPersonajeState}></Lista>
+          <Lista
+            {...dataPersonaje}
+            setPersonajeState={setPersonajeState}
+          ></Lista>
         </div>
       </div>
     </div>

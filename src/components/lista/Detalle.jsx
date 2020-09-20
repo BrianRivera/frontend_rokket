@@ -1,4 +1,5 @@
 import React from "react";
+import { URL_BACKEND } from "../../utils/contants";
 
 export const Detalle = ({ setvista, vista: { seleccion } }) => {
   const handleReturn = () => {
@@ -20,7 +21,7 @@ export const Detalle = ({ setvista, vista: { seleccion } }) => {
           <p>raza: {seleccion.race.name}</p>
           <p>habilidad raza: {seleccion.race.skills}</p>
           <img
-            src="https://www.alfabetajuega.com/wp-content/uploads/2019/08/dragon-ball-goku.jpg"
+            src={`${URL_BACKEND}/imagen/`+seleccion.image}
             className="img-fluid"
             alt="imgPersonaje"
           ></img>

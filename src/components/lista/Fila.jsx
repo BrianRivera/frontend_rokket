@@ -1,11 +1,12 @@
 import React from "react";
+import { URL_BACKEND } from "../../utils/contants";
 
-export const Fila = ({_id,name,skills,race,handleDeletePersonaje, handleDetalle}) => {
+export const Fila = ({_id,name,skills,image,race,handleDeletePersonaje, handleDetalle}) => {
   return (
     <tr>
       <td>
         <img
-          src="https://www.alfabetajuega.com/wp-content/uploads/2019/08/dragon-ball-goku.jpg"
+          src={`${URL_BACKEND}/imagen/${image}`}
           className="img-fluid"
           alt="imgPersonaje"
         ></img>

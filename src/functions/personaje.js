@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import { URL_BACKEND } from "../utils/contants";
 
-export const insertPersonaje = async(body, setPersonajeState) => {
+export const insertPersonaje = async(body, formdata, setPersonajeState) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
@@ -14,7 +14,7 @@ export const insertPersonaje = async(body, setPersonajeState) => {
 
     fetch(`${URL_BACKEND}/personaje`, requestOptions)
         .then((response) => response.json())
-        .then((result) => {
+        .then(async(result) => {
             if (result.ok) {
                 Swal.fire({
                     icon: "success",
@@ -23,6 +23,9 @@ export const insertPersonaje = async(body, setPersonajeState) => {
                     showConfirmButton: false,
                     timer: 2000,
                 });
+                console.log(result.personajes._id);
+                const dataImg = await insertImage(result.personajes._id, formdata);
+                result.personajes.image = dataImg.nombreArchivoFinal;
                 refreshStatePersonaje(setPersonajeState, result.personajes, "insert");
             } else {
                 Swal.fire({
@@ -104,3 +107,15 @@ const refreshStatePersonaje = (setPersonajeState, personaje, type) => {
         }
     });
 };
+
+
+const insertImage = async(id, image) => {
+    var requestOptions = {
+        method: 'PUT',
+        body: image,
+        redirect: 'follow'
+    };
+
+    const response = await fetch(`${URL_BACKEND}/upload/${id}`, requestOptions);
+    return await response.json();
+}
