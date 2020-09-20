@@ -9,11 +9,10 @@ export const ItemFormLista = ({name='',description='',handleDeleteItem}) => {
         <h6 className="col-sm-11">{name}</h6>
         <svg
           onClick={()=>handleDeleteItem(name)}
-          className="col-sm-1"
           width="1em"
           height="1em"
           viewBox="0 0 16 16"
-          className="bi bi-trash-fill"
+          className="col-sm-1 bi bi-trash-fill"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
         >

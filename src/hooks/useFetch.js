@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 //https://breakingbadapi.com/api/quotes/1
 
 export const useFetch = (url) => {
-
-    const isMounted = useRef(true)
+    const isMounted = useRef(true);
     const [state, setState] = useState({ data: null, loading: true, error: null })
 
     useEffect(() => {
@@ -26,7 +25,7 @@ export const useFetch = (url) => {
         fetch(url)
             .then(resp => resp.json())
             .then(data => {
-
+                (data.personajes) && data.personajes.reverse();
                 if (isMounted.current) {
                     setState({
                         loading: false,
@@ -48,6 +47,6 @@ export const useFetch = (url) => {
         }
     }, [url])
 
-    return state;
+    return [state, setState];
 
 }
