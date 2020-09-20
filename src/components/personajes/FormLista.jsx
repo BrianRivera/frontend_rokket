@@ -13,7 +13,6 @@ export const FormLista = ({
 
   const handleAddHabilitie = (e) => {
     e.preventDefault();
-    console.log(values);
     if (!values.name || !values.description)
       return Swal.fire({
         icon: "error",

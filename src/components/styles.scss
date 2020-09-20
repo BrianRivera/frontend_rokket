@@ -63,12 +63,12 @@
         border-style: none;
         border-radius: 14px;
         color: white;
-    }
-    .btnAddSkill {
-        background-color: hsl(199, 80%, 63%);
         &:focus {
             outline-style: none;
         }
+    }
+    .btnAddSkill {
+        background-color: hsl(199, 80%, 63%);
         &:hover {
             background-color: #56b3df;
         }
@@ -78,9 +78,6 @@
     }
     .btnSave {
         background-color: rgb(85, 236, 92);
-        &:focus {
-            outline-style: none;
-        }
         &:hover {
             background-color: #51da58;
         }
@@ -90,9 +87,6 @@
     }
     .btnDelete {
         background-color: #e43333;
-        &:focus {
-            outline-style: none;
-        }
         &:hover {
             background-color: hsl(0, 65%, 49%);
         }

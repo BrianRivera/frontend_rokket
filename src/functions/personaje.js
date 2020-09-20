@@ -23,7 +23,6 @@ export const insertPersonaje = async(body, formdata, setPersonajeState) => {
                     showConfirmButton: false,
                     timer: 2000,
                 });
-                console.log(result.personajes._id);
                 const dataImg = await insertImage(result.personajes._id, formdata);
                 result.personajes.image = dataImg.nombreArchivoFinal;
                 refreshStatePersonaje(setPersonajeState, result.personajes, "insert");
