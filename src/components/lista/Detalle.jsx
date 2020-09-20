@@ -1,7 +1,6 @@
 import React from "react";
 
 export const Detalle = ({ setvista, vista: { seleccion } }) => {
-  console.log(seleccion);
   const handleReturn = () => {
     setvista((e) => ({ vista: !e.vista, seleccion: {} }));
   };
@@ -28,7 +27,22 @@ export const Detalle = ({ setvista, vista: { seleccion } }) => {
         </div>
         <div className="col-sm-8">
           <h5>Habilidades</h5>
-          
+          <table>
+            <thead>
+              <tr>
+                <th style={{width:'200px'}}>Habilidad</th>
+                <th>Descripcion</th>
+              </tr>
+            </thead>
+            <tbody>
+              {seleccion.skills.map((r, i) => (
+                <tr key={r.name.toString() + i}>
+                  <td>{r.name}</td>
+                  <td>{r.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
       <br />
