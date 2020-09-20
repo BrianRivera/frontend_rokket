@@ -16,14 +16,14 @@ export const Personajes = () => {
   );
   const [itemsState, setitemsState] = useState([]);
   const [imageState, setImageState] = useState({
-    default: 'https://vignette.wikia.nocookie.net/dragonball/images/3/35/Esfera_del_dragon_4_estrellas.png/revision/latest?cb=20140105064853&path-prefix=es',
-  })
+    default:
+      "https://vignette.wikia.nocookie.net/dragonball/images/3/35/Esfera_del_dragon_4_estrellas.png/revision/latest?cb=20140105064853&path-prefix=es",
+  });
   const [values, handleInputChange, reset] = useForm({
     name: "",
     race: "",
   });
   const { name, race } = values;
-
 
   const formHabilidades = [
     {
@@ -40,36 +40,34 @@ export const Personajes = () => {
 
   const handleSubmitPersonaje = (e) => {
     e.preventDefault();
-    if(!imageState.file || imageState.file === '') return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `Debe de seleccionar una imagen`,
-    })
-    
+    if (!imageState.file || imageState.file === "")
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Debe de seleccionar una imagen`,
+      });
+
     const body = new URLSearchParams();
     body.append("name", name);
     body.append("race", race);
     body.append("skills", JSON.stringify(itemsState));
     body.append("image", "I1");
 
-
     const formdata = new FormData();
     formdata.append("archivo", imageState.file, imageState.nameFile);
-    insertPersonaje(body,formdata,setPersonajeState);
-    setImageState({default:imageState.default});
+    insertPersonaje(body, formdata, setPersonajeState);
+    setImageState({ default: imageState.default });
     reset();
     setitemsState([]);
-    document.querySelector('#fileInput').value = '';
+    document.querySelector("#fileInput").value = "";
   };
 
   const handleFile = (e) => {
     const file = e.target.files[0];
     const nameFile = e.target.value;
-    if (file) {
-      setImageState(e=>({...e,file
-        ,nameFile}))
-      };
-    // URL.createObjectURL(contImg[0])
+    file
+      ? setImageState((e) => ({ ...e, file, nameFile }))
+      : setImageState({ default: imageState.default });
   };
 
   return (
@@ -136,7 +134,11 @@ export const Personajes = () => {
             id="fileInput"
           />
           <img
-            src={(!imageState.file || imageState.file === '') ? imageState.default : URL.createObjectURL(imageState.file)}
+            src={
+              !imageState.file || imageState.file === ""
+                ? imageState.default
+                : URL.createObjectURL(imageState.file)
+            }
             className="img-fluid"
             alt="imgPersonaje"
           ></img>
