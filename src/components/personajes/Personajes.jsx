@@ -59,6 +59,7 @@ export const Personajes = () => {
     setImageState({default:imageState.default});
     reset();
     setitemsState([]);
+    document.querySelector('#fileInput').value = '';
   };
 
   const handleFile = (e) => {
@@ -132,6 +133,7 @@ export const Personajes = () => {
             name="image"
             className="form-control"
             onChange={handleFile}
+            id="fileInput"
           />
           <img
             src={(!imageState.file || imageState.file === '') ? imageState.default : URL.createObjectURL(imageState.file)}
@@ -141,7 +143,7 @@ export const Personajes = () => {
           <br />
           <br />
         </div>
-        <div className="col-sm-12">
+        <div className="col-sm-12 listaYDetalle">
           <Lista
             {...dataPersonaje}
             setPersonajeState={setPersonajeState}

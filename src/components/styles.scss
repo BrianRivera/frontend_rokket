@@ -104,6 +104,11 @@
         height: 200px;
         overflow-y: scroll;
     }
+    .listaYDetalle {
+        overflow-x: scroll;
+        overflow-y: scroll;
+        max-height: 400px;
+    }
 }
 
 .btnDetalle {
