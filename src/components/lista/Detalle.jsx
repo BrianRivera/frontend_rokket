@@ -2,6 +2,9 @@ import React from "react";
 import { URL_BACKEND } from "../../utils/contants";
 
 export const Detalle = ({ setvista, vista: { seleccion } }) => {
+  //vista de detalles
+  
+  //retorna a la tabla
   const handleReturn = () => {
     setvista((e) => ({ vista: !e.vista, seleccion: {} }));
   };

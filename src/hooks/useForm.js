@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+//funcion que maneja el valor de los formularios
 export const useForm = (initialState = {}) => {
 
     const [values, setValue] = useState(initialState)

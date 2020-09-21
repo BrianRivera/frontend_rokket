@@ -9,8 +9,11 @@ export const FormLista = ({
   itemsState,
   setitemsState,
 }) => {
+  //funcion que maneja parte del formulario de ingreso,
+  //controla la actualizacion del valor de los datos name y description de habilidades
   const [values, handleInputChange, reset] = useForm();
 
+  //ingreso de habilidades/verificacion de habilidad unica
   const handleAddHabilitie = (e) => {
     e.preventDefault();
     if (!values.name || !values.description)
@@ -32,6 +35,7 @@ export const FormLista = ({
     return setitemsState((i) => [values, ...i]);
   };
 
+  //quita la habilidad elegida
   const handleDeleteItem = (name) => {
     return setitemsState((i) => i.filter((e) => e.name !== name));
   };

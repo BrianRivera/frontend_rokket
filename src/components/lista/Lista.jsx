@@ -4,12 +4,16 @@ import { Detalle } from "./Detalle";
 import { Fila } from "./Fila";
 
 export const Lista = memo(({loading,data,error,setPersonajeState}) => {
-   //lista personajes
+  
+  //lista personajes
+  //estado vista de tabla con personajes o detalle de uno
   const [vista, setvista] = useState({vista:true,seleccion:{}});
 
+    //elimina un personaje
    const handleDeletePersonaje = (id) => {
      deletePersonaje(id,setPersonajeState);
     };
+    //actualiza el estado para cambiar de vista
     const handleDetalle = (id) =>{
       const seleccion = data.personajes.find((r)=>r._id === id);
       setvista({vista:false,seleccion:seleccion});

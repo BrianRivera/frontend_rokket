@@ -2,6 +2,7 @@ import React from "react";
 import { URL_BACKEND } from "../../utils/contants";
 
 export const Fila = ({_id,name,skills,image,race,handleDeletePersonaje, handleDetalle}) => {
+  //crea las filas de la tabla
   return (
     <tr>
       <td>

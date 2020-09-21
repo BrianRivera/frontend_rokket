@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 import { URL_BACKEND } from "../utils/contants";
-
+//funcion de insercion de personaje
 export const insertPersonaje = async(body, formdata, setPersonajeState) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
+    //config de parametros y envio de datos para la peticion de ingreso
     var requestOptions = {
         method: "POST",
         headers: myHeaders,
@@ -23,8 +23,11 @@ export const insertPersonaje = async(body, formdata, setPersonajeState) => {
                     showConfirmButton: false,
                     timer: 2000,
                 });
+                //llama a la funcion de insercion de imagenes
                 const dataImg = await insertImage(result.personajes._id, formdata);
+                //actualiza el dato de 'image' en el nuevo personaje
                 result.personajes.image = dataImg.nombreArchivoFinal;
+                // llama a la funcion de actualizacion de lista de pesonajes
                 refreshStatePersonaje(setPersonajeState, result.personajes, "insert");
             } else {
                 Swal.fire({
@@ -42,7 +45,7 @@ export const insertPersonaje = async(body, formdata, setPersonajeState) => {
             })
         );
 };
-
+//funcion de eliminacion de imagenes
 export const deletePersonaje = async(id, setPersonajeState) => {
     Swal.fire({
         title: "Seguro desea eliminar este personaje?",
@@ -66,6 +69,7 @@ export const deletePersonaje = async(id, setPersonajeState) => {
                             showConfirmButton: false,
                             timer: 2000,
                         });
+                        //actualiza la lista sin el personaje eliminado
                         refreshStatePersonaje(setPersonajeState, id, "delete");
                     } else {
                         Swal.fire({
@@ -85,7 +89,7 @@ export const deletePersonaje = async(id, setPersonajeState) => {
         }
     });
 };
-
+//actualizacion de lista para ingresar y/o eliminar
 const refreshStatePersonaje = (setPersonajeState, personaje, type) => {
     setPersonajeState((e) => {
         let newPersonaje;
@@ -104,7 +108,7 @@ const refreshStatePersonaje = (setPersonajeState, personaje, type) => {
         }
     });
 };
-
+//insercion de imagenes
 const insertImage = async(id, image) => {
     var requestOptions = {
         method: "PUT",

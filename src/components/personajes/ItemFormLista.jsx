@@ -2,7 +2,7 @@ import React from "react";
 
 export const ItemFormLista = ({name='',description='',handleDeleteItem}) => {
 
-
+//item de la lista de habilidades
   return (
     <div className="col-sm-12 itemPoder">
       <div className="row">

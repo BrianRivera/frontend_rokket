@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 //https://breakingbadapi.com/api/quotes/1
 
+//funcion de peticion get al backend
 export const useFetch = (url) => {
     const isMounted = useRef(true);
     const [state, setState] = useState({ data: null, loading: true, error: null })
